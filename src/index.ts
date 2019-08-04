@@ -8,6 +8,7 @@ import { makeExecutableSchema } from 'graphql-tools';
 import CatAPI from './datasource/CatAPI';
 import logger from './logger';
 import ImagesAPI from './datasource/ImagesAPI';
+import VotesAPI from './datasource/VotesAPI';
 
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 
@@ -20,6 +21,7 @@ const server = new ApolloServer({
   dataSources: (): { [key: string]: CatAPI } => ({
     breedsAPI: new BreedsAPI(),
     imagesAPI: new ImagesAPI(),
+    votesAPI: new VotesAPI(),
   }),
   tracing: true,
   playground: {
